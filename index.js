@@ -19,6 +19,15 @@ app.get('/game/:id', (req, res) => {
     modelJogos.findOne({ where:{id:id}}).then(jogo => {res.send({jogo:jogo})})
 });
 
+app.post('/game', (req, res) => {
+    var title = req.body.title
+    var year = req.body.year
+    var price = req.body.price
+    
+    modelJogos.create({title:title, year:year, price:price}).then(()=>{res.send("Dados Salvo")})
+});
+
+
 
 
 app.listen(8081, () => {console.log('App Rodando')});
