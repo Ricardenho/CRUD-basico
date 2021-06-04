@@ -33,6 +33,11 @@ app.put('/game/:id', (req, res) => {
     modelJogos.update({title:title},{ where: {id:id}}).then(()=>{res.send('Atulizado')})
 });
 
+app.delete('/game/:id', (req, res) => {
+    var id=req.params.id
+    modelJogos.destroy({ where: {id:id}}).then(()=>{res.send('Deletado')})
+      
+});
 
 
 app.listen(8081, () => {console.log('App Rodando')});
