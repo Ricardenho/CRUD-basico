@@ -27,6 +27,11 @@ app.post('/game', (req, res) => {
     modelJogos.create({title:title, year:year, price:price}).then(()=>{res.send("Dados Salvo")})
 });
 
+app.put('/game/:id', (req, res) => {
+    var id=req.params.id
+    var title=req.body.title
+    modelJogos.update({title:title},{ where: {id:id}}).then(()=>{res.send('Atulizado')})
+});
 
 
 
