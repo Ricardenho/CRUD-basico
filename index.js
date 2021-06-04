@@ -14,5 +14,11 @@ app.get('/', (req, res) => {
     .then(jogos =>{res.send({jogos:jogos})})
 });
 
+app.get('/game/:id', (req, res) => {
+    var id=req.params.id
+    modelJogos.findOne({ where:{id:id}}).then(jogo => {res.send({jogo:jogo})})
+});
+
+
 
 app.listen(8081, () => {console.log('App Rodando')});
